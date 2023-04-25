@@ -47,9 +47,45 @@ function renderDSSP(spArr) {
       </div>
     </div>`;
       contentHTML = contentHTML + contentTr;
-      console.log('contentHTML: ', contentHTML);
+      // console.log('contentHTML: ', contentHTML);
     }
     document.getElementById("phoneList").innerHTML = contentHTML;
+  }
+
+  function renderCardList(spArr){
+    var cartHTML = ''
+    for (var i = 0; i < spArr.length; i++) {
+      var cart = spArr[i];
+      // sp là item trong array dssp
+      var contentTr = `
+      <div class="product">
+    <div class="product__1">
+      <div class="product__thumbnail">
+        <img class='img-fluid pic' src="${cart.img}" alt="">
+      </div>
+      <div class="product__details">
+        <div style="margin-bottom: 8px;"><b>${cart.name}</b></div>
+        <div style="font-size: 90%;">Screen: <span class="tertiary">${cart.screen}</span></div>
+        <div style="font-size: 90%;">Back Camera: <span class="tertiary">${cart.backCamera}</span></div>
+        <div style="font-size: 90%;">Front Camera: <span class="tertiary">${cart.frontCamera}</span></div>
+        <div style="margin-top: 8px;"><a href="#!" onclick="btnRemove('')">Remove</a></div>
+      </div>
+  </div>
+  <div class="product__2">
+    <div class="qty">
+      <span><b>Quantity:</b> </span> &nbsp; &nbsp;
+      <span class="minus bg-dark" onclick="btnMinus('4')">-</span>
+      <span id='quantity' class="quantityResult mx-2"></span>
+      <span class="plus bg-dark" onclick="btnAdd('4')">+</span>
+    </div>
+    <div class="product__price"><b>$${cart.price}</b></div>
+  </div>
+</div>
+      `;
+      cartHTML = cartHTML + contentTr;
+      // console.log('cartHTML: ', cartHTML);
+    }
+    document.getElementById("cartList").innerHTML = cartHTML;
   }
   
   function layThongTinTuForm() {
@@ -61,7 +97,6 @@ function renderDSSP(spArr) {
     var img = document.querySelector("#img").value;
     var desc = document.querySelector("#desc").value;
     var type = document.querySelector("#type").value;
-  
     var sp = new Product(
       name,
       price,

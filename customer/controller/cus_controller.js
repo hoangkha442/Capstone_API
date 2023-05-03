@@ -42,7 +42,7 @@ function renderDSSP(spArr) {
             </div>
             <span class="text-success"><b>In Stock</b></span>
           </div>
-          <button type="button" class="btn btn-block w-50" onclick="btnAddToCart()">Add to cart</button>
+          <button type="button" class="btn btn-block w-50" id='btnAddToCart' onclick="btnAddToCart(${sp.id})" >Add to cart</button>
         </div>
       </div>
     </div>`;
@@ -56,7 +56,6 @@ function renderDSSP(spArr) {
     var cartHTML = ''
     for (var i = 0; i < spArr.length; i++) {
       var cart = spArr[i];
-      // sp là item trong array dssp
       var contentTr = `
       <div class="product">
     <div class="product__1">
@@ -88,16 +87,16 @@ function renderDSSP(spArr) {
     document.getElementById("cartList").innerHTML = cartHTML;
   }
   
-  function layThongTinTuForm() {
-    var name = document.querySelector("#name").value;
-    var price = document.querySelector("#price").value;
-    var screen = document.querySelector("#screen").value;
-    var backCamera = document.querySelector("#backCam").value;
-    var frontCamera = document.querySelector("#frontCam").value;
-    var img = document.querySelector("#img").value;
-    var desc = document.querySelector("#desc").value;
-    var type = document.querySelector("#type").value;
-    var sp = new Product(
+  function layThongTinTuForm(cart) {
+    var name = cart.name;
+    var price = document.querySelector("#price");
+    var screen = document.querySelector("#screen");
+    var backCamera = document.querySelector("#backCam");
+    var frontCamera = document.querySelector("#frontCam");
+    var img = document.querySelector("#img");
+    var desc = document.querySelector("#desc");
+    var type = document.querySelector("#type");
+    var cart = new Cart(
       name,
       price,
       screen,
@@ -107,19 +106,19 @@ function renderDSSP(spArr) {
       desc,
       type
     );
-    return sp;
+    return cart
   }
-  
-  function showThongTinLenForm(sp) {
-    document.querySelector("#name").value = sp.name;
-    document.querySelector("#price").value = sp.price;
-    document.querySelector("#screen").value = sp.screen;
-    document.querySelector("#backCam").value = sp.backCamera;
-    document.querySelector("#frontCam").value = sp.frontCamera;
-    document.querySelector("#img").value = sp.img;
-    document.querySelector("#desc").value = sp.desc;
-    document.querySelector("#type").value = sp.type;
+  function showThongTinLenForm(cart) {
+    document.querySelector("#name").value = cart.name;
+    document.querySelector("#price").value = cart.price;
+    document.querySelector("#screen").value = cart.screen;
+    document.querySelector("#backCam").value = cart.backCamera;
+    document.querySelector("#frontCam").value = cart.frontCamera;
+    document.querySelector("#img").value = cart.img;
+    document.querySelector("#desc").value = cart.desc;
+    document.querySelector("#type").value = cart.type;
   }
+
   function batLoading() {
     document.getElementById("loading").style.display = "flex";
   }

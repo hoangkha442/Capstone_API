@@ -1,51 +1,80 @@
-const BASE_URL = "https://643e1144c72fda4a0becfbc4.mockapi.io/product"
-const CART_URL = 'https://644731037bb84f5a3e39c15e.mockapi.io/cart'
+const BASE_URL = "https://643e1144c72fda4a0becfbc4.mockapi.io/product";
+const CART_URL = "https://644731037bb84f5a3e39c15e.mockapi.io/cart";
+const cart = [];
+const cartItem = [];
 
-function fetchDSSP(){
-    axios({
-        url: BASE_URL,
-        method: 'GET'
+// DANH SÁCH SẢN PHẨM
+function fetchDSSP() {
+  axios({
+    url: BASE_URL,
+    method: "GET",
+  })
+    .then(function (res) {
+      renderDSSP(res.data);
+      var prd = res.data;
+      console.log("prd: ", prd);
+      for (var i = 0; i < prd.length; i++) {
+        cart.push(prd[i]);
+      }
     })
-    .then(function(res){
-        renderDSSP(res.data)
-        console.log(res.data);
-        // console.log('res: ', res);
-    })
-    .catch(function(err){
-        console.log('err: ', err);
-    })
+    .catch(function (err) {
+      console.log("err: ", err);
+    });
 }
-fetchDSSP()
+fetchDSSP();
 
-function fetchCart(){
-    axios({
-        url: CART_URL,
-        method: 'GET'
+function fetchCart() {
+  axios({
+    url: CART_URL,
+    method: "GET",
+  })
+    .then(function (res) {
+      console.log(res.data);
+      renderCardList(res.data);
     })
-    .then(function(res){
-        renderCardList(res.data)
-        console.log('res: ', res);
-    })
-    .catch(function(err){
-        console.log('err: ', err);
-    })
+    .catch(function (err) {
+      console.log("err: ", err);
+    });
 }
-fetchCart()
+fetchCart();
 
-// add cart_list
-function btnAddToCart(id){
-    // debugger
-    var dataCart = fetchDSSP()
-    axios({
-        url: CART_URL,
-        method: 'POST',
-        data: dataCart
+// ADD CARD LIST
+function btnAddToCart(id) {
+  //   debugger
+  for (var i = 0; i < cart.length; i++) {
+    if (cart[i].id == id) {
+      var item = cart[i];
+      cartItem.push(item);
+      console.log("cartItem: ", cartItem);
+      break;
+    }
+  }
+  axios({
+    url: CART_URL,
+    method: "POST",
+  })
+    .then(function (res) {
+      res.data = cartItem;
+      renderCardList(res.data);
     })
-    .then(function(res){
-        console.log('res: ', res.data);
-    })
-    .catch(function(err){
-        console.log('err: ', err);
-    })
+    .catch(function (err) {
+      console.log("err: ", err);
+    });
 }
+fetchCart();
 
+// const findItemById = (arrCart, id) => {
+//     debugger
+//     let item;
+//     arrCart.forEach((ele) => {
+//       if (ele.Product.id == id) {
+//         item = ele;
+//         return;
+//       }
+//     });
+//     console.log(item);
+//   };
+
+// function findId(id){
+//     console.log('id: ', id);
+// }

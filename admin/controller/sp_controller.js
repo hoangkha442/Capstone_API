@@ -14,7 +14,7 @@ function renderDSSP(spArr) {
                <button 
                data-toggle="modal"
                data-target="#exampleModalCenter" onclick="suaSP(${sp.id})"
-               class="btn btn-secondary" >Sửa</button>
+               class="btn btn-secondary">Sửa</button>
             </td>
     </tr> `;
     contentHTML = contentHTML + contentTr;

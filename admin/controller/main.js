@@ -1,3 +1,4 @@
+// import { svService } from "../services/phoneService";
 var idSelected = null
 
 const BASE_URL = "https://643e1144c72fda4a0becfbc4.mockapi.io/product"
@@ -108,7 +109,6 @@ function suaSP(id){
 }
 
 // UPDATE
-
 document.querySelector('#btnUpdate').onclick = function(id){
   var dataSp = layThongTinTuForm();
   batLoading()
@@ -153,3 +153,7 @@ document.querySelector('#btnUpdate').onclick = function(id){
     tatLoading()
   }
 }
+
+// const resetForm = () => {
+//   document.getElementById('formPhone').reset()
+// }

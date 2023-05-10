@@ -20,10 +20,21 @@
       rel="stylesheet"
       href="https://use.fontawesome.com/releases/v6.1.1/css/all.css"
     />
-    <link rel="stylesheet" href="./css/main.css" />
+        <!-- toast css -->
+        <link
+        rel="stylesheet"
+        type="text/css"
+        href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"
+      />
+    <link rel="stylesheet" href="./css/style.css" />
   </head>
 
   <body>
+    <!-- <div id="loading">
+      <div class="spinner-border text-warning" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+    </div> -->
     <header>
       <nav class="navbar navbar-expand-lg navbar-dark fixed-top mb-5">
         <div class="container">
@@ -141,7 +152,6 @@
               <select
                 class="form-select w-25 mb-5"
                 id="selectList"
-                onchange="selectOption()"
                 aria-label="Default select example"
               >
                 <option value="all">All Brands</option>
@@ -166,22 +176,6 @@
           <div class="cart__totals">
             <table class="totals">
               <tbody>
-                <tr>
-                  <th class="align-left font-normal tertiary">Subtotal</th>
-                  <td class="align-right" id="subTotal">$0</td>
-                </tr>
-                <tr>
-                  <th class="align-left font-normal tertiary">
-                    Shipping <small>(estimated)</small>
-                  </th>
-                  <td class="align-right" id="shipping">$0</td>
-                </tr>
-                <tr>
-                  <th class="align-left font-normal tertiary">
-                    Tax <small>(estimated)</small>
-                  </th>
-                  <td class="align-right" id="tax">$0</td>
-                </tr>
                 <tr>
                   <th class="align-left">Total</th>
                   <td class="align-right" id="priceTotal">$0</td>
@@ -213,110 +207,7 @@
       </div>
     </div>
     <!-- Footer -->
-    <footer
-      class="text-center text-lg-start bg-dark text-light gradient-custom"
-    >
-      <!-- Section: Social media -->
-      <section class="d-flex justify-content-center p-4 border-bottom">
-        <!-- Left -->
-        <div class="me-5 d-none d-lg-block">
-          <span>Get connected with us on social networks:</span>
-        </div>
-        <!-- Left -->
-        <!-- Right -->
-        <div>
-          <a href="" class="me-4 text-reset">
-            <i class="fab fa-facebook-f"></i>
-          </a>
-          <a href="" class="me-4 text-reset">
-            <i class="fab fa-twitter"></i>
-          </a>
-          <a href="" class="me-4 text-reset">
-            <i class="fab fa-google"></i>
-          </a>
-          <a href="" class="me-4 text-reset">
-            <i class="fab fa-instagram"></i>
-          </a>
-          <a href="" class="me-4 text-reset">
-            <i class="fab fa-github"></i>
-          </a>
-        </div>
-        <!-- Right -->
-      </section>
-      <!-- Section: Social media -->
-      <!-- Section: Links  -->
-      <section class="">
-        <div class="container text-center text-md-start mt-5">
-          <!-- Grid row -->
-          <div class="row mt-3">
-            <!-- Grid column -->
-            <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
-              <!-- Content -->
-              <h6 class="text-uppercase fw-bold mb-4">
-                <i class="fa-lg fa-solid fa-robot me-3"></i>My Phone
-              </h6>
-              <p>
-                We pride ourselves on our efficiency and hard work, but most of
-                all our ability to source you the best quality and best value
-                products and devices in the market.
-              </p>
-            </div>
-            <!-- Grid column -->
-            <!-- Grid column -->
-            <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
-              <!-- Links -->
-              <h6 class="text-uppercase fw-bold mb-4">Brands</h6>
-              <p>
-                <a href="#!" class="text-reset">iPhone</a>
-              </p>
-              <p>
-                <a href="#!" class="text-reset">Sumsung</a>
-              </p>
-            </div>
-            <!-- Grid column -->
-            <!-- Grid column -->
-            <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
-              <!-- Links -->
-              <h6 class="text-uppercase fw-bold mb-4">Useful links</h6>
-              <p>
-                <a href="#!" class="text-reset">Pricing</a>
-              </p>
-              <p>
-                <a href="#!" class="text-reset">Settings</a>
-              </p>
-              <p>
-                <a href="#!" class="text-reset">Orders</a>
-              </p>
-              <p>
-                <a href="#!" class="text-reset">Help</a>
-              </p>
-            </div>
-            <!-- Grid column -->
-            <!-- Grid column -->
-            <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
-              <!-- Links -->
-              <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
-              <p><i class="fas fa-home me-3"></i>Go Vap - Ho Chi Minh</p>
-              <p>
-                <i class="fas fa-envelope me-3"></i>
-                myphone@mail.com
-              </p>
-              <p><i class="fas fa-phone me-3"></i> + 01 234 567 88</p>
-              <p><i class="fas fa-print me-3"></i> + 01 234 567 89</p>
-            </div>
-            <!-- Grid column -->
-          </div>
-          <!-- Grid row -->
-        </div>
-      </section>
-      <!-- Section: Links  -->
-      <!-- Copyright -->
-      <div class="text-center p-4">
-        © 2022 Copyright:
-        <a class="text-reset fw-bold" href="">My Phone</a>
-      </div>
-      <!-- Copyright -->
-    </footer>
+
     <!-- Footer -->
 
     <script
@@ -331,6 +222,12 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     ></script>
+        <!-- toast js -->
+    <script
+    type="text/javascript"
+    src="https://cdn.jsdelivr.net/npm/toastify-js"
+  ></script>
+    <script src="../controller/controller.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="//cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
@@ -348,8 +245,6 @@
         }
       });
     </script>
-    <script src="../model/cusModel.js"></script>
-    <script src="../controller/main.js"></script>
-    <script src="../controller/cus_controller.js"></script>
+    <script type="module" src="../controller/main.js"></script>
   </body>
 </html>

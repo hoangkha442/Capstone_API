@@ -80,15 +80,18 @@ document.querySelector('#btnAddPhone').onclick = function(id){
           y: 10, // vertical axis - can be a number or a string indicating unity. eg: '2em'
         },
       }).showToast();
+      resetForm()
       fetchDSSP()
     })
     .catch(function(err){
       tatLoading()
+      resetForm()
       // console.log('err: ', err);
     })
   }
   else{
     tatLoading()
+    resetForm()
   }
  
 }
@@ -142,18 +145,23 @@ document.querySelector('#btnUpdate').onclick = function(id){
           y: 10, // vertical axis - can be a number or a string indicating unity. eg: '2em'
         },
       }).showToast();
+      resetForm()
       tatLoading()
       fetchDSSP()
     })
     .catch(function(err){
       tatLoading()
+      resetForm()
       console.log(err);
     })
   }else{
     tatLoading()
+    resetForm()
   }
 }
 
+function resetForm(){
+  document.getElementById('formPhone').reset()
+}
 // const resetForm = () => {
-//   document.getElementById('formPhone').reset()
 // }
